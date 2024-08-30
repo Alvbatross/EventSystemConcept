@@ -1,0 +1,17 @@
+extends Resource
+class_name EventUtils
+
+enum EventCategory {
+	BGM,
+	DIALOGUE,
+	INTERACTION
+}
+
+enum Events {
+	BGM_OUTDOORS,
+	BGM_INDOORS,
+	DIALOGUE_LOOK_AT_MARBLE_SPIRIT_INIT,
+	ACTION_LOOK_AT_MARBLE_SPIRIT,
+	DIALOGUE_GATE_IS_LOCKED,
+	ACTION_PICK_UP_KEY
+}

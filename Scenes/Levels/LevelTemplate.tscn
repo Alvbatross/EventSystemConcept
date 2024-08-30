@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://31vscskq8jc8"]
+
+[ext_resource type="Script" path="res://Scenes/EventControl.gd" id="1_bem1l"]
+
+[node name="LevelTemplate" type="Node2D"]
+
+[node name="Events" type="Node" parent="."]
+script = ExtResource("1_bem1l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://hljl35eywbmf"]
+
+[ext_resource type="PackedScene" uid="uid://31vscskq8jc8" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_jl84f"]
+[ext_resource type="PackedScene" uid="uid://b2isdslrl7dqo" path="res://Scenes/Events/Event.tscn" id="2_pqpyb"]
+[ext_resource type="Script" path="res://Scenes/Levels/Level3.gd" id="2_vcntv"]
+[ext_resource type="Script" path="res://Scenes/Events/Inside.gd" id="3_mpa21"]
+
+[node name="Level 3" instance=ExtResource("1_jl84f")]
+script = ExtResource("2_vcntv")
+
+[node name="Inside" parent="Events" index="0" instance=ExtResource("2_pqpyb")]
+script = ExtResource("3_mpa21")
+event_name = 1
+
+[node name="ToLevel2Button" type="Button" parent="CanvasLayer" index="0"]
+offset_left = 56.0
+offset_top = 172.0
+offset_right = 232.0
+offset_bottom = 380.0
+text = "To Level 2"
+
+[connection signal="event_ended" from="Events/Inside" to="Events" method="_on_event_ended"]
+[connection signal="event_started" from="Events/Inside" to="Events/Inside" method="_on_event_started"]
