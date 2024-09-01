@@ -1,0 +1,44 @@
+[
+	{
+		"Event_Name": "BGMPlayerOutside",
+		"Event_Category": "BGM",
+		"Oneshot": false,
+		"Event_Prerequisites": []
+	},
+	{
+		"Event_Name": "BGMPlayerInA1",
+		"Event_Category": "BGM",
+		"Oneshot": false,
+		"Event_Prerequisites": []
+	},
+	{
+		"Event_Name": "DialogueLookAtMe",
+		"Event_Category": "DIALOGUE",
+		"Oneshot": true,
+		"Event_Prerequisites": []
+	},
+	{
+		"Event_Name": "ActionLookAtMarbleSpirit",
+		"Event_Category": "ACTION",
+		"Oneshot": true,
+		"Event_Prerequisites": [
+			"DialogueLookAtMe"
+		]
+	},
+	{
+		"Event_Name": "DialogueGateIsLocked",
+		"Event_Category": "DIALOGUE",
+		"Oneshot": true,
+		"Event_Prerequisites": [
+			"ActionLookAtMarbleSpirit"
+		]
+	},
+	{
+		"Event_Name": "ActionPickUpKey",
+		"Event_Category": "ACTION",
+		"Oneshot": true,
+		"Event_Prerequisites": [
+			"DialogueDoorIsLocked"
+		]
+	}
+]

@@ -3,28 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://31vscskq8jc8" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_tphk1"]
 [ext_resource type="PackedScene" uid="uid://b2isdslrl7dqo" path="res://Scenes/Events/Event.tscn" id="2_gxwm5"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level1.gd" id="2_vpk88"]
-[ext_resource type="Script" path="res://Scenes/Events/Outdoors.gd" id="3_6oe3n"]
-[ext_resource type="Script" path="res://Scenes/Events/DialogueLookAtMarbleSpiritInit.gd" id="4_itn7w"]
-[ext_resource type="Script" path="res://Scenes/Events/LookAtMarbleSpirit.gd" id="5_xdcwr"]
+[ext_resource type="Script" path="res://Scenes/Events/BGMPlayerOutside.gd" id="3_6oe3n"]
+[ext_resource type="Script" path="res://Scenes/Events/DialogueLookAtMe.gd" id="4_itn7w"]
+[ext_resource type="Script" path="res://Scenes/Events/ActionLookAtMarbleSpirit.gd" id="5_xdcwr"]
 
 [node name="Level1" instance=ExtResource("1_tphk1")]
 script = ExtResource("2_vpk88")
 
-[node name="Outdoors" parent="Events" index="0" instance=ExtResource("2_gxwm5")]
+[node name="BGMPlayerOutside" parent="Events" index="0" instance=ExtResource("2_gxwm5")]
 script = ExtResource("3_6oe3n")
 
-[node name="LookAtMarbleSpiritInit" parent="Events" index="1" instance=ExtResource("2_gxwm5")]
+[node name="DialogueLookAtMe" parent="Events" index="1" instance=ExtResource("2_gxwm5")]
 script = ExtResource("4_itn7w")
-event_category = 1
-event_name = 2
-oneshot = true
 
-[node name="LookAtMarbleSpirit" parent="Events" index="2" instance=ExtResource("2_gxwm5")]
+[node name="ActionLookAtMarbleSpirit" parent="Events" index="2" instance=ExtResource("2_gxwm5")]
 script = ExtResource("5_xdcwr")
-event_category = 2
-event_name = 3
-event_prerequisites = Array[int]([2])
-oneshot = true
 
 [node name="ToLevel2Button" type="Button" parent="CanvasLayer" index="0"]
 offset_left = 506.0
@@ -42,9 +35,4 @@ offset_bottom = 230.0
 disabled = true
 text = "Look at Marble Spirit"
 
-[connection signal="event_started" from="Events/Outdoors" to="Events/Outdoors" method="_on_event_started"]
-[connection signal="event_ended" from="Events/LookAtMarbleSpiritInit" to="Events" method="_on_event_ended"]
-[connection signal="event_started" from="Events/LookAtMarbleSpiritInit" to="Events/LookAtMarbleSpiritInit" method="_on_event_started"]
-[connection signal="event_ended" from="Events/LookAtMarbleSpirit" to="Events" method="_on_event_ended"]
-[connection signal="event_started" from="Events/LookAtMarbleSpirit" to="Events/LookAtMarbleSpirit" method="_on_event_started"]
-[connection signal="pressed" from="CanvasLayer/LookAtMarbleSpiritButton" to="Events/LookAtMarbleSpirit" method="_on_look_at_marble_spirit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/LookAtMarbleSpiritButton" to="Events/ActionLookAtMarbleSpirit" method="_on_look_at_marble_spirit_button_pressed"]

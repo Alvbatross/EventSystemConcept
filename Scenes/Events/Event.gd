@@ -4,31 +4,43 @@ class_name Event
 signal event_started()
 signal event_ended()
 
-@export var event_category : EventUtils.EventCategory
-@export var event_name : EventUtils.Events
-@export var event_prerequisites : Array[EventUtils.Events]
+var event_category : String
+var event_name : String
+var event_prerequisites : Array
 @export var oneshot : bool
 
 var prerequisites_done : bool = true
 var is_ongoing : bool = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	if event_category == EventUtils.EventCategory.BGM:
+	initialize_event()
+	
+	if event_category == "BGM":
 		if event_name == EventHandler.current_bgm:
 			queue_free()
-		else:
-			initialize_event()
+			return
 	elif oneshot:
 		if event_name in EventHandler.finished_events:
 			queue_free()
-		else:
-			initialize_event()
-	else:
-		initialize_event()
+			return
+	
+	event_started.connect(_on_event_started)
+	event_ended.connect(get_parent()._on_event_ended)
+	start_event()
 
 
 func initialize_event() -> void:
+	event_name = self.name
+	if EventHandler.event_library.has(event_name):
+		event_category = EventHandler.event_library[event_name]["Event_Category"]
+		oneshot = EventHandler.event_library[event_name]["Oneshot"]
+		event_prerequisites = EventHandler.event_library[event_name]["Event_Prerequisites"]
+	else:
+		print("Event " + event_name + " Not Found")
+
+
+func start_event() -> void:
 	prerequisites_done = true
 	for flag in event_prerequisites:
 		if flag not in EventHandler.finished_events:
@@ -49,3 +61,6 @@ func close_event() -> void:
 	await tree_exited
 	emit_signal("event_ended")
 	
+
+func _on_event_started():
+	pass

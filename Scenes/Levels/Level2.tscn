@@ -3,28 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://31vscskq8jc8" path="res://Scenes/Levels/LevelTemplate.tscn" id="1_tstnl"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level2.gd" id="2_4rnwd"]
 [ext_resource type="PackedScene" uid="uid://b2isdslrl7dqo" path="res://Scenes/Events/Event.tscn" id="2_yq28i"]
-[ext_resource type="Script" path="res://Scenes/Events/Outdoors.gd" id="3_mxg4w"]
-[ext_resource type="Script" path="res://Scenes/Events/GateIsLocked.gd" id="4_ar618"]
-[ext_resource type="Script" path="res://Scenes/Events/PickUpKey.gd" id="5_xo6p2"]
+[ext_resource type="Script" path="res://Scenes/Events/BGMPlayerOutside.gd" id="3_mxg4w"]
+[ext_resource type="Script" path="res://Scenes/Events/DialogueGateIsLocked.gd" id="4_ar618"]
+[ext_resource type="Script" path="res://Scenes/Events/ActionPickUpKey.gd" id="5_xo6p2"]
 
 [node name="Level2" instance=ExtResource("1_tstnl")]
 script = ExtResource("2_4rnwd")
 
-[node name="Outdoors" parent="Events" index="0" instance=ExtResource("2_yq28i")]
+[node name="BGMPlayerOutside" parent="Events" index="0" instance=ExtResource("2_yq28i")]
 script = ExtResource("3_mxg4w")
 
-[node name="GateIsLocked" parent="Events" index="1" instance=ExtResource("2_yq28i")]
+[node name="DialogueGateIsLocked" parent="Events" index="1" instance=ExtResource("2_yq28i")]
 script = ExtResource("4_ar618")
-event_category = 1
-event_name = 4
-event_prerequisites = Array[int]([3])
 oneshot = true
 
-[node name="PickUpKey" parent="Events" index="2" instance=ExtResource("2_yq28i")]
+[node name="ActionPickUpKey" parent="Events" index="2" instance=ExtResource("2_yq28i")]
 script = ExtResource("5_xo6p2")
-event_category = 2
-event_name = 5
-event_prerequisites = Array[int]([4])
 oneshot = true
 
 [node name="ToLevel1Button" type="Button" parent="CanvasLayer" index="0"]
@@ -46,11 +40,7 @@ offset_left = 461.0
 offset_top = 76.0
 offset_right = 674.0
 offset_bottom = 207.0
+disabled = true
 text = "Pick Up Key"
 
-[connection signal="event_started" from="Events/Outdoors" to="Events/Outdoors" method="_on_event_started"]
-[connection signal="event_ended" from="Events/GateIsLocked" to="Events" method="_on_event_ended"]
-[connection signal="event_started" from="Events/GateIsLocked" to="Events/GateIsLocked" method="_on_event_started"]
-[connection signal="event_ended" from="Events/PickUpKey" to="Events" method="_on_event_ended"]
-[connection signal="event_started" from="Events/PickUpKey" to="Events/PickUpKey" method="_on_event_started"]
-[connection signal="pressed" from="CanvasLayer/PickUpKey" to="Events/PickUpKey" method="_on_pick_up_key_pressed"]
+[connection signal="pressed" from="CanvasLayer/PickUpKey" to="Events/ActionPickUpKey" method="_on_pick_up_key_pressed"]
