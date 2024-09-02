@@ -8,7 +8,7 @@
 [node name="Level 3" instance=ExtResource("1_jl84f")]
 script = ExtResource("2_vcntv")
 
-[node name="Inside" parent="Events" index="0" instance=ExtResource("2_pqpyb")]
+[node name="BGMPlayerInA1" parent="Events" index="0" instance=ExtResource("2_pqpyb")]
 script = ExtResource("3_mpa21")
 
 [node name="ToLevel2Button" type="Button" parent="CanvasLayer" index="0"]
@@ -17,6 +17,3 @@ offset_top = 172.0
 offset_right = 232.0
 offset_bottom = 380.0
 text = "To Level 2"
-
-[connection signal="event_ended" from="Events/Inside" to="Events" method="_on_event_ended"]
-[connection signal="event_started" from="Events/Inside" to="Events/Inside" method="_on_event_started"]

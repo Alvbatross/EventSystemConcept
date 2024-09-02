@@ -15,11 +15,9 @@ script = ExtResource("3_mxg4w")
 
 [node name="DialogueGateIsLocked" parent="Events" index="1" instance=ExtResource("2_yq28i")]
 script = ExtResource("4_ar618")
-oneshot = true
 
 [node name="ActionPickUpKey" parent="Events" index="2" instance=ExtResource("2_yq28i")]
 script = ExtResource("5_xo6p2")
-oneshot = true
 
 [node name="ToLevel1Button" type="Button" parent="CanvasLayer" index="0"]
 offset_left = 105.0

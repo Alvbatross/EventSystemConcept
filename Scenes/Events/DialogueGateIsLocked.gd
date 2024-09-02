@@ -2,6 +2,6 @@ extends Event
 
 
 func _on_event_started():
-	AudioHandler.play_dialogue(AudioHandler.AudioKeys.GATE_IS_LOCKED)
-	await AudioHandler.dialogue_player.finished
+	play_event_sound()
+	await event_sound_done
 	close_event()

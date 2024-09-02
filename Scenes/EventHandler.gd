@@ -3,7 +3,7 @@ extends Node
 var current_bgm
 
 var event_library : Dictionary = {}
-
+var ongoing_events : Array = []
 var finished_events : Array = []
 
 func _ready():
@@ -20,7 +20,11 @@ func load_data(file_location: String) -> Dictionary:
 		output_dictionary[key["Event_Name"]] = {
 			"Event_Category" : key["Event_Category"],
 			"Oneshot" : key["Oneshot"],
-			"Event_Prerequisites" : key["Event_Prerequisites"]
+			"Event_Prerequisites" : key["Event_Prerequisites"],
+			"Event_Completion_Flags" : key["Event_Completion_Flags"],
+			"Event_Sound" : key["Event_Sound"],
+			"Loop_Sound" : key["Loop_Sound"],
+			"Loop_Interval" : key["Loop_Interval"]
 		}
 	return output_dictionary
 	
