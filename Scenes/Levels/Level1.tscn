@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b2isdslrl7dqo" path="res://Scenes/Events/Event.tscn" id="2_gxwm5"]
 [ext_resource type="Script" path="res://Scenes/Levels/Level1.gd" id="2_vpk88"]
 [ext_resource type="Script" path="res://Scenes/Events/BGMPlayerOutside.gd" id="3_6oe3n"]
-[ext_resource type="Script" path="res://Scenes/Events/DialogueLookAtMe.gd" id="4_itn7w"]
 [ext_resource type="Script" path="res://Scenes/Events/ActionLookAtMarbleSpirit.gd" id="5_xdcwr"]
+[ext_resource type="Script" path="res://Scenes/Events/DialogueLookAtMe.gd" id="6_uxpll"]
 
 [node name="Level1" instance=ExtResource("1_tphk1")]
 script = ExtResource("2_vpk88")
@@ -13,11 +13,11 @@ script = ExtResource("2_vpk88")
 [node name="BGMPlayerOutside" parent="Events" index="0" instance=ExtResource("2_gxwm5")]
 script = ExtResource("3_6oe3n")
 
-[node name="DialogueLookAtMe" parent="Events" index="1" instance=ExtResource("2_gxwm5")]
-script = ExtResource("4_itn7w")
-
-[node name="ActionLookAtMarbleSpirit" parent="Events" index="2" instance=ExtResource("2_gxwm5")]
+[node name="ActionLookAtMarbleSpirit" parent="Events" index="1" instance=ExtResource("2_gxwm5")]
 script = ExtResource("5_xdcwr")
+
+[node name="DialogueLookAtMe" type="Node" parent="Events" index="2"]
+script = ExtResource("6_uxpll")
 
 [node name="ToLevel2Button" type="Button" parent="CanvasLayer" index="0"]
 offset_left = 506.0
